@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-import { openAgentChat, trackAIEvent } from '@/lib/ai-agent';
 
 /**
  * AI ADVISOR CALL-TO-ACTION BUTTON
- * Consistent entry point for AI chat across the site
+ * Redirects to WhatsApp for customer support
  */
 
 interface Props {
@@ -40,17 +39,13 @@ export const AIAdvisorCTA: React.FC<Props> = ({
   };
 
   const handleClick = () => {
-    trackAIEvent('cta_clicked', {
-      variant,
-      page,
-      text
-    });
+    // WhatsApp number for Bin Nadeem Mattress House
+    const whatsappNumber = "923008540914"; // +92 300 8540914 without spaces and +
+    const message = encodeURIComponent(`Hi! I need help with ${text.toLowerCase()} from ${page} page.`);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
     
-    // Open agent with context
-    openAgentChat({
-      source_page: page,
-      cta_text: text
-    });
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
   };
 
   return (

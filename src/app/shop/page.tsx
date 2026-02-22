@@ -33,6 +33,7 @@ interface ShopProduct {
   bestseller: boolean;
   inStock: boolean;
   price: number;
+  imageUrl?: string;
 }
 
 // Master Products Database
@@ -55,7 +56,8 @@ const allProducts: ShopProduct[] = [
     warranty: 10,
     trial: 60,
     bestseller: true,
-    inStock: true
+    inStock: true,
+    imageUrl: '/assets/MasterComfortPro.webp'
   },
   {
     id: 2,
@@ -75,7 +77,8 @@ const allProducts: ShopProduct[] = [
     warranty: 10,
     trial: 60,
     bestseller: true,
-    inStock: true
+    inStock: true,
+    imageUrl: '/assets/MasterSupportPlus.webp'
   },
   {
     id: 3,
@@ -95,7 +98,8 @@ const allProducts: ShopProduct[] = [
     warranty: 10,
     trial: 60,
     bestseller: false,
-    inStock: true
+    inStock: true,
+    imageUrl: '/assets/MasterHybridElite.webp'
   },
   {
     id: 4,
@@ -115,7 +119,8 @@ const allProducts: ShopProduct[] = [
     warranty: 10,
     trial: 60,
     bestseller: false,
-    inStock: true
+    inStock: true,
+    imageUrl: '/assets/MasterCloudSoft.webp'
   },
   {
     id: 5,
@@ -135,7 +140,8 @@ const allProducts: ShopProduct[] = [
     warranty: 10,
     trial: 60,
     bestseller: false,
-    inStock: true
+    inStock: true,
+    imageUrl: '/assets/MasterSteelCore.webp'
   },
   {
     id: 6,
@@ -155,7 +161,8 @@ const allProducts: ShopProduct[] = [
     warranty: 10,
     trial: 60,
     bestseller: true,
-    inStock: true
+    inStock: true,
+    imageUrl: '/assets/MasterDuoAdjustable.webp'
   }
 ];
 
@@ -233,7 +240,7 @@ const ShopPage: React.FC = () => {
       {/* PAGE HEADER */}
       <section className="bg-gradient-to-r from-master-navy to-master-blue text-white py-12">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Master Mattress Collection</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-master-gold">Master Mattress Collection</h1>
           <p className="text-xl text-gray-100">
             Find your perfect mattress with our intelligent recommendation system.
           </p>
@@ -375,13 +382,23 @@ const ShopPage: React.FC = () => {
                     className="border-2 border-gray-200 rounded-xl overflow-hidden hover:border-master-blue hover:shadow-xl transition"
                   >
                     {/* Product Image */}
-                    <div className="bg-gradient-to-br from-gray-100 to-gray-200 h-56 flex items-center justify-center relative">
+                    <div className="bg-gray-100 h-56 overflow-hidden relative">
                       {product.bestseller && (
-                        <div className="absolute top-4 right-4 bg-master-gold text-master-navy px-3 py-1 rounded-full text-xs font-bold">
+                        <div className="absolute top-4 right-4 bg-master-gold text-master-navy px-3 py-1 rounded-full text-xs font-bold z-10">
                           BESTSELLER
                         </div>
                       )}
-                      <p className="text-gray-600">{product.name}</p>
+                      {product.imageUrl ? (
+                        <img 
+                          src={product.imageUrl} 
+                          alt={`${product.name} - Master Molty Foam Mattress`}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full">
+                          <p className="text-gray-600">{product.name}</p>
+                        </div>
+                      )}
                     </div>
 
                     {/* Product Info */}

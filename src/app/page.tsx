@@ -33,6 +33,7 @@ interface Product {
   target: string;
   warranty: number;
   trial: number;
+  imageUrl?: string;
 }
 
 interface Testimonial {
@@ -71,7 +72,8 @@ const HomePage: React.FC = () => {
       ],
       target: 'Side sleepers with shoulder & hip pain',
       warranty: 10,
-      trial: 60
+      trial: 60,
+      imageUrl: '/assets/MasterComfortPro.webp'
     },
     {
       id: 2,
@@ -86,7 +88,8 @@ const HomePage: React.FC = () => {
       ],
       target: 'Back and stomach sleepers',
       warranty: 10,
-      trial: 60
+      trial: 60,
+      imageUrl: '/assets/MasterSupportPlus.webp'
     },
     {
       id: 3,
@@ -101,7 +104,8 @@ const HomePage: React.FC = () => {
       ],
       target: 'Combination sleepers & couples',
       warranty: 10,
-      trial: 60
+      trial: 60,
+      imageUrl: '/assets/MasterHybridElite.webp'
     }
   ];
 
@@ -268,13 +272,14 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Hero Image Placeholder */}
+          {/* Hero Image */}
           <div className="hidden md:block">
-            <div className="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl h-96 flex items-center justify-center shadow-2xl">
-              <div className="text-center">
-                <p className="text-gray-600 text-lg font-semibold">Master Mattress</p>
-                <p className="text-gray-500">Hero Product Image</p>
-              </div>
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src="/assets/HeroMasterMattress.webp" 
+                alt="Master Molty Foam Premium Mattress - Luxury Sleep Comfort"
+                className="w-full h-96 object-cover"
+              />
             </div>
           </div>
         </div>
@@ -336,8 +341,18 @@ const HomePage: React.FC = () => {
                 className="border-2 border-gray-200 rounded-xl overflow-hidden hover:border-master-blue hover:shadow-xl transition"
               >
                 {/* Product Image */}
-                <div className="bg-gradient-to-br from-gray-100 to-gray-200 h-48 flex items-center justify-center">
-                  <p className="text-gray-600">{product.name}</p>
+                <div className="bg-gray-100 h-48 overflow-hidden">
+                  {product.imageUrl ? (
+                    <img 
+                      src={product.imageUrl} 
+                      alt={`${product.name} - Master Molty Foam Mattress`}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center h-full">
+                      <p className="text-gray-600">{product.name}</p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Product Info */}
@@ -401,7 +416,7 @@ const HomePage: React.FC = () => {
       <section className="py-20 bg-gradient-to-r from-master-navy to-master-blue text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Sleep Science Matters</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-master-gold">Sleep Science Matters</h2>
             <p className="text-xl text-gray-100">Understanding your sleep is the first step to better rest.</p>
           </div>
 
@@ -421,7 +436,7 @@ const HomePage: React.FC = () => {
               }
             ].map((item, idx) => (
               <div key={idx} className="bg-white/10 backdrop-blur p-8 rounded-xl border border-white/20">
-                <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
+                <h3 className="text-2xl font-bold mb-3 text-master-gold">{item.title}</h3>
                 <p className="text-gray-100 leading-relaxed">{item.description}</p>
               </div>
             ))}
@@ -519,7 +534,7 @@ const HomePage: React.FC = () => {
       {/* NEWSLETTER SECTION */}
       <section className="py-16 bg-gradient-to-r from-master-navy to-master-blue text-white">
         <div className="max-w-3xl mx-auto px-4 md:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Sleep Tips & Exclusive Offers</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-master-gold">Sleep Tips & Exclusive Offers</h2>
           <p className="text-lg text-gray-100 mb-8">
             Get science-backed sleep tips, product updates, and exclusive discounts delivered to your inbox.
           </p>
