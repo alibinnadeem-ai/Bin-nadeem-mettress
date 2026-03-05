@@ -129,21 +129,21 @@ const QuizPage: React.FC = () => {
         productName: 'Master Comfort Pro',
         matchScore: 98,
         reason: 'Based on your side sleeping position and need for pressure relief, the Comfort Pro\'s memory foam layers will contour to your shoulders and hips, eliminating pain points.',
-        image: 'Comfort Pro Image'
+        image: '/assets/MasterComfortPro.webp'
       };
     } else if (position === 'stomach' || firmness === 'firm' || pain === 'back_pain') {
       return {
         productName: 'Master Support Plus',
         matchScore: 96,
         reason: 'Your need for spinal alignment and back support makes the Support Plus ideal. Its high-density core prevents hips from sinking, keeping your spine neutral.',
-        image: 'Support Plus Image'
+        image: '/assets/MasterSupportPlus.webp'
       };
     } else {
       return {
         productName: 'Master Hybrid Elite',
         matchScore: 97,
         reason: 'As a combination sleeper or someone needing balance, the Hybrid Elite offers the best of both worlds: spring support for mobility and foam for comfort.',
-        image: 'Hybrid Elite Image'
+        image: '/assets/MasterHybridElite.webp'
       };
     }
   };
@@ -194,8 +194,12 @@ const QuizPage: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
-                <div className="bg-gray-100 h-64 rounded-xl flex items-center justify-center">
-                  <p className="text-gray-500">{recommendation.image}</p>
+                <div className="bg-gray-100 h-64 rounded-xl overflow-hidden">
+                  <img
+                    src={recommendation.image}
+                    alt={recommendation.productName}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-master-navy mb-4">Why this mattress?</h3>

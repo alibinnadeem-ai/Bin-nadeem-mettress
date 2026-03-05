@@ -458,6 +458,7 @@ const ShopPage: React.FC = () => {
                             name: product.name,
                             price: product.price,
                             quantity: 1,
+                            image: product.imageUrl,
                             variant: product.firmness
                           })}
                           className="flex-1 bg-master-navy text-white py-2 rounded font-bold hover:bg-master-blue transition"
